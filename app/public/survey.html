@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Friend Finder Survey</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- App Styles & JS -->
+    <link rel="stylesheet" href="./style.css">
+
+
+</head>
+<body>
+
+  <div class="container">
+      <div class="jumbotron">
+          <div class="row">
+                <div class="col-md-8">
+
+                    <h1>Friend Finder</h1>
+                    <h3>You are one step closer! Take the Survey!</h3>
+                </div>
+                <div class ="col-md-4">
+                    <img src="images/friends_logo.jpeg" alt="Friend Finder" align="right">
+                </div>
+          </div>
+          <hr>
+          <div class="row">
+              <div class="col-md-12">
+                   <div class="text-center">
+                        <form method="link" action="./home.html">
+                        <button type="submit" class="btn btn-success btn-large" id="home">Home</button>
+                        </form>
+                  </div>
+             </div>
+          </div>
+      </div>
+  </div>
+
+ <div class="container">
+    <div class="row">
+
+      <div class="col-md-12">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>ABOUT YOU</strong></h3>
+          </div>
+          <div class="panel-body">
+            <form method="POST" role="form" data-toggle="validator" id="survey">
+
+              <div class="row form-group">
+                <label for="name">Name(required)</label>
+                <input type="text" class="form-control" id="name" data-minlength= "1" required>
+                <div class="help-block with-errors"></div>
+              </div>
+
+              <div class="row form-group">
+                <label for="photo">Link to Photo Image(required)</label>
+                <input type="text" class="form-control" id="photo" data-minlength= "15" required>
+                <div class="help-block with-errors"></div>
+              </div>
+
+              <div class=" row form-group">
+                  <div>          
+                      <label for="q1">Do you consider yourself a planner?</label>
+
+                      <select class="form-control selectBox" id="q1" required>
+                            <option value>Make a Selection</option>
+                            <option value="1">Strongly Disagree</option>
+                            <option value="2">Disagree</option>
+                            <option value="3">Neutral</option>
+                            <option value="4">Agree</option>
+                            <option value="5">Strongly Agree</option>
+                      </select>
+                  </div>
+                  <div class="help-block with-errors"></div>
+              </div>
+
+              <div class=" row form-group">
+                  <div>          
+                      <label for="q2">Do you prefer your best friend to be of your same sex?</label>
+
+                      <select class="form-control selectBox" id="q2" required>
+                            <option value>Make a Selection</option>
+                            <option value="1">Strongly Disagree</option>
+                            <option value="2">Disagree</option>
+                            <option value="3">Neutral</option>
+                            <option value="4">Agree</option>
+                            <option value="5">Strongly Agree</option>
+                      </select>
+                  </div>
+                  <div class="help-block with-errors"></div>                  
+              </div>
+
+              <div class=" row form-group">
+                  <div>          
+                      <label for="q3">Do you believe there is a God?</label>
+
+                      <select class="form-control selectBox" id="q3" required>
+                            <option value>Make a Selection</option>
+                            <option value="1">Strongly Disagree</option>
+                            <option value="2">Disagree</option>
+                            <option value="3">Neutral</option>
+                            <option value="4">Agree</option>
+                            <option value="5">Strongly Agree</option>
+                      </select>
+                  </div>
+
+                  <div class="help-block with-errors"></div>
+              </div>
+
+              <div class=" row form-group">
+                  <div>          
+                      <label for="q4">Do you believe in the Republican party?</label>
+
+                      <select class="form-control selectBox" id="q4" required>
+                            <option value>Make a Selection</option>
+                            <option value="1">Strongly Disagree</option>
+                            <option value="2">Disagree</option>
+                            <option value="3">Neutral</option>
+                            <option value="4">Agree</option>
+                            <option value="5">Strongly Agree</option>
+                      </select>
+                  </div>
+                  <div class="help-block with-errors"></div>
+              </div>
+
+              <div class=" row form-group">
+                  <div>          
+                      <label for="q5">Do you believe in the Democratic Party?</label>
+
+                      <select class="form-control selectBox" id="q5" required>
+                            <option value>Make a Selection</option>
+                            <option value="1">Strongly Disagree</option>
+                            <option value="2">Disagree</option>
+                            <option value="3">Neutral</option>
+                            <option value="4">Agree</option>
+                            <option value="5">Strongly Agree</option>
+                      </select>
+                  </div>
+                  <div class="help-block with-errors"></div>
+             </div>
+
+              <div class=" row form-group">
+                  <div>          
+                      <label for="q6">Do you believe in Politics?</label>
+
+                      <select class="form-control selectBox" id="q6" required>
+                            <option value>Make a Selection</option>
+                            <option value="1">Strongly Disagree</option>
+                            <option value="2">Disagree</option>
+                            <option value="3">Neutral</option>
+                            <option value="4">Agree</option>
+                            <option value="5">Strongly Agree</option>
+                      </select>
+                  </div>
+                  <div class="help-block with-errors"></div>
+              </div>
+
+            </form>
+
+            <br>
+
+            <div class="text-left">
+              <button type="submit" class="btn btn-primary btn-large" id="submitAnswers"><span class="glyphicon glyphicon-fire"></span> Submit Answers</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

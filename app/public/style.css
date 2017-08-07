@@ -1,0 +1,22 @@
+body {
+	background-image: url('images/friends.jpg');
+}
+
+.jumbotron {
+	background-color: lightcyan;
+
+}
+/* making the panels opaque  */
+.panel {
+	opacity: 0.8
+
+}
+
+.panel-default {
+
+	padding: 15px;
+}
+
+.selectBox {
+	width: 175px;
+}
