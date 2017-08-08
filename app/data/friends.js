@@ -4,9 +4,9 @@
 
 var friendsArray = [
   {
-    name: "",
+    name: "me",
     photoURL: "",
-    answers: []
+    answers: [1,3,2,1,5,5]
   }
 ];
 

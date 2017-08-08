@@ -31,7 +31,7 @@
           <div class="row">
               <div class="col-md-12">
                    <div class="text-center">
-                        <form method="link" action="./home.html">
+                        <form method="link" action="/">
                         <button type="submit" class="btn btn-success btn-large" id="home">Home</button>
                         </form>
                   </div>
@@ -62,8 +62,8 @@
                           <input type="text" class="form-control" id="photo" data-minlength= "15" required>
                           <div class="help-block with-errors"></div>
                       </div>
-
-                      <div class=" row form-group">
+                  <div id="answers">
+                      <div class="row form-group">
                       <div>
                           <h4><strong>Question 1</strong></h4>          
                           <label for="q1">Do you consider yourself a planner?</label>
@@ -161,7 +161,7 @@
                       </div>
                       <div class="help-block with-errors"></div>
                   </div>
-
+                </div>
             </form>
 
             <br>
@@ -177,4 +177,45 @@
   </div>
 
 </body>
+
+<script type="text/javascript">
+
+
+    $("#submitAnswers").on("click", function(){
+        console.log("inside the submit answers on click");
+        var newFriend = {
+            name:$("#name").val().trim(),
+            photo:$("#photo").val().trim(),
+            answers:[$("#q1").val, $("#q2").val, $("#q3").val, $("#q4").val, $("#q5").val, $("#q6").val ]
+        } 
+        console.log(newFriend);
+        //setting a variable to determine where is the user at
+        var currentURL = window.location.origin;
+
+        $.post(currentURL + "/api/friends", newFriend, function(data){
+            //clearing the form
+            name:$("#name").val(""),
+            photo:$("#photo").val(""),
+            answers:[$("#q1").val(""), $("#q2").val(""), $("#q3").val(""), $("#q4").val(""), $("#q5").val(""), $("#q6").val("") ]
+        }
+    }); //end on click function
+
+    function storeAnswers(){
+        //setting a variable to determine where is the user at
+        var currentURL = window.location.origin;
+
+        // maquin and AJAX call to get the API
+        $.ajax({url: currentURL + "/api/friends", method:"GET"})
+
+            .done(function(friendsArray){
+
+              console.log("URL:" + currentURL + "/api/tables");
+
+              console.log(friendsArray);
+            });
+
+    } // end function storeAnswers
+
+    storeAnswers();
+
 </html>
