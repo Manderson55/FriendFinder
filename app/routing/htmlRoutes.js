@@ -17,7 +17,7 @@ module.exports = function (app) {  //***** WHy do we need to use a function here
 	  res.sendFile(path.join(__dirname, "/../public/survey.html"));
 	});
 
-	app.use(express.static('/../public'));
+	app.use(express.static("/../public"));
 
 }
 

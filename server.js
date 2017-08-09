@@ -25,6 +25,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // true or false ???????????
 // ??????????????????
 app.use(bodyParser.text());
 
+app.use(express.static(__dirname + "/public"));
+
 // adding our html routes to the server
 require("./app/routing/htmlRoutes.js")(app);
 
