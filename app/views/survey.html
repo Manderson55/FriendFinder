@@ -15,7 +15,7 @@
 </head>
 <body>
 
-  <div class="container">
+  <div id="main-page" class="container">
       <div class="jumbotron">
           <div class="row">
                 <div class="col-md-8">
@@ -58,8 +58,8 @@
                       </div>
 
                       <div class="row form-group">
-                          <label for="photo">Link to Photo Image(required)</label>
-                          <input type="text" class="form-control" id="photo" data-minlength= "15" required>
+                          <label for="photoURL">Link to Photo Image(required)</label>
+                          <input type="text" class="form-control" id="photoURL" data-minlength= "15" required>
                           <div class="help-block with-errors"></div>
                       </div>
                   <div id="answers">
@@ -68,7 +68,7 @@
                           <h4><strong>Question 1</strong></h4>          
                           <label for="q1">Do you consider yourself a planner?</label>
 
-                          <select class="form-control selectBox" id="q1" required>
+                          <select class="form-control selectBox chosen-select" id="q1" required>
                                 <option value>Make a Selection</option>
                                 <option value="1">Strongly Disagree</option>
                                 <option value="2">Disagree</option>
@@ -83,9 +83,9 @@
                   <div class=" row form-group">
                       <div> 
                           <h4><strong>Question 2</strong></h4>         
-                          <label for="q2">Do you prefer your best friend to be of your same sex?</label>
+                          <label for="q2">Do you like to read?</label>
 
-                          <select class="form-control selectBox" id="q2" required>
+                          <select class="form-control selectBox chosen-select" id="q2" required>
                                 <option value>Make a Selection</option>
                                 <option value="1">Strongly Disagree</option>
                                 <option value="2">Disagree</option>
@@ -99,9 +99,9 @@
 
                   <div class=" row form-group">
                       <div> 
-                          <h4><strong>Question 2</strong></h4>          
-                          <label for="q3">Do you believe there is a God?</label>
-                          <select class="form-control selectBox" id="q3" required>
+                          <h4><strong>Question 3</strong></h4>          
+                          <label for="q3">Do you believe in God?</label>
+                          <select class="form-control selectBox chosen-select" id="q3" required>
                                 <option value>Make a Selection</option>
                                 <option value="1">Strongly Disagree</option>
                                 <option value="2">Disagree</option>
@@ -117,8 +117,8 @@
                   <div class=" row form-group">
                       <div>
                           <h4><strong>Question 4</strong></h4>           
-                          <label for="q4">Do you believe in the Republican party?</label>
-                          <select class="form-control selectBox" id="q4" required>
+                          <label for="q4">Do you like movies?</label>
+                          <select class="form-control selectBox chosen-select" id="q4" required>
                                 <option value>Make a Selection</option>
                                 <option value="1">Strongly Disagree</option>
                                 <option value="2">Disagree</option>
@@ -133,8 +133,8 @@
                   <div class=" row form-group">
                       <div>
                           <h4><strong>Question 5</strong></h4>           
-                          <label for="q5">Do you believe in the Democratic Party?</label>
-                          <select class="form-control selectBox" id="q5" required>
+                          <label for="q5">Do you you exercise regularly?</label>
+                          <select class="form-control selectBox chosen-select" id="q5" required>
                                 <option value>Make a Selection</option>
                                 <option value="1">Strongly Disagree</option>
                                 <option value="2">Disagree</option>
@@ -149,8 +149,8 @@
                   <div class=" row form-group">
                       <div>          
                           <h4><strong>Question 6</strong></h4> 
-                          <label for="q6">Do you believe in Politics?</label>
-                          <select class="form-control selectBox" id="q6" required>
+                          <label for="q6">Do you enjoy going out to eat?</label>
+                          <select class="form-control selectBox chosen-select" id="q6" required>
                                 <option value>Make a Selection</option>
                                 <option value="1">Strongly Disagree</option>
                                 <option value="2">Disagree</option>
@@ -176,46 +176,109 @@
     </div>
   </div>
 
-</body>
+<!-- footer  -->
 
-<script type="text/javascript">
+  <div class="container">
+      <a href="/api/friends">API Friends List</a> | <a href="https://github.com/Manderson55/FriendFinder" target="_blank">GitHub Repo</a>
+  </div>
 
 
-    $("#submitAnswers").on("click", function(){
+  <!-- Modal Dialog Displaying Closest Friend Match -->
+
+  <script type="text/javascript">
+
+
+    $("#submitAnswers").on("click", function(event){
+
+        event.preventDefault();
+
         console.log("inside the submit answers on click");
-        var newFriend = {
-            name:$("#name").val().trim(),
-            photo:$("#photo").val().trim(),
-            answers:[$("#q1").val, $("#q2").val, $("#q3").val, $("#q4").val, $("#q5").val, $("#q6").val ]
-        } 
-        console.log(newFriend);
-        //setting a variable to determine where is the user at
-        var currentURL = window.location.origin;
+        validateForm();
+        
+        if (validateForm() == true) {           
 
-        $.post(currentURL + "/api/friends", newFriend, function(data){
-            //clearing the form
-            name:$("#name").val(""),
-            photo:$("#photo").val(""),
-            answers:[$("#q1").val(""), $("#q2").val(""), $("#q3").val(""), $("#q4").val(""), $("#q5").val(""), $("#q6").val("") ]
+            var newFriend = {
+                name:$("#name").val().trim(),
+                photoURL:$("#photoURL").val().trim(),
+                answers:[$("#q1").val(),
+                         $("#q2").val(),
+                         $("#q3").val(),
+                         $("#q4").val(), 
+                         $("#q5").val(), 
+                         $("#q6").val() 
+                        ]
+            }; 
+            console.log(newFriend);
+            //setting a variable to determine where is the user at
+            var currentURL = window.location.origin + "/api/friends";
+            console.log(currentURL);
+
+
+            $.post(currentURL, newFriend, function(data, status){
+              console.log(data, status);
+              var modal = 
+              "<div id=\"modal1\" class=\"modal\"> " +
+                "<div class=\"modal-content\">" +
+                 "<h4>Closest Friend Match</h4>" +
+                 "<h3>" + data.matchName + "</h3>" +
+                 "<div class=\"divider\"></div>" +
+                 "<h5 id=\"userMatch\"></h5>" +
+                 "<img id=\"my-img\" width=\"650\" src=\"" + data.matchPhotoURL + "\" >" +
+ //               "<img id=\"userMat chImage\" class=\"materialboxed\" width=\"650\" src=\"\">" +
+               "</div>"
+
+              $("#main-page").append(modal);
+              $('.modal').modal({
+                  dismissible: false, // Modal can be dismissed by clicking outside of the modal
+                  opacity: .5, // Opacity of modal background
+                  inDuration: 300, // Transition in duration
+                  outDuration: 200, // Transition out duration
+                  startingTop: '4%', // Starting top style attribute
+                  endingTop: '10%' // Ending top style attribute
+              });
+
+            }); 
+
+            clearForm();
+
+            // find the best match
+
+            }
+        else{
+            alert("Please fill out all fields");
         }
     }); //end on click function
 
-    function storeAnswers(){
-        //setting a variable to determine where is the user at
-        var currentURL = window.location.origin;
 
-        // maquin and AJAX call to get the API
-        $.ajax({url: currentURL + "/api/friends", method:"GET"})
+    function validateForm() {
+          var isValid = true;
+              $('.form-control').each(function() {
+                    if ($(this).val() === "")
+                          isValid = false;
+              });
+     
+               $('.chosen-select').each(function() {
+                    if ($(this).val() === "")
+                         isValid = false
+              })
+         return isValid;
+    }
 
-            .done(function(friendsArray){
+    function clearForm(){
 
-              console.log("URL:" + currentURL + "/api/tables");
+         $("#name").val("");
+         $("#photoURL").val("");
+         $("#q1").val(""); 
+         $("#q2").val("");
+         $("#q3").val(""); 
+         $("#q4").val(""); 
+         $("#q5").val(""); 
+         $("#q6").val("");
 
-              console.log(friendsArray);
-            });
+    }
 
-    } // end function storeAnswers
+</script>
 
-    storeAnswers();
+</body>
 
 </html>
