@@ -146,7 +146,7 @@
                       <div class="help-block with-errors"></div>
                  </div>
 
-                  <div class=" row form-group">
+                 <div class=" row form-group">
                       <div>          
                           <h4><strong>Question 6</strong></h4> 
                           <label for="q6">Do you enjoy going out to eat?</label>
@@ -161,6 +161,72 @@
                       </div>
                       <div class="help-block with-errors"></div>
                   </div>
+
+                 <div class=" row form-group">
+                      <div>          
+                          <h4><strong>Question 7</strong></h4> 
+                          <label for="q7">Do you like to dance?</label>
+                          <select class="form-control selectBox chosen-select" id="q7" required>
+                                <option value>Make a Selection</option>
+                                <option value="1">Strongly Disagree</option>
+                                <option value="2">Disagree</option>
+                                <option value="3">Neutral</option>
+                                <option value="4">Agree</option>
+                                <option value="5">Strongly Agree</option>
+                          </select>
+                      </div>
+                      <div class="help-block with-errors"></div>
+                  </div>
+
+                 <div class=" row form-group">
+                      <div>          
+                          <h4><strong>Question 8</strong></h4> 
+                          <label for="q8">Do you like to travel?</label>
+                          <select class="form-control selectBox chosen-select" id="q8" required>
+                                <option value>Make a Selection</option>
+                                <option value="1">Strongly Disagree</option>
+                                <option value="2">Disagree</option>
+                                <option value="3">Neutral</option>
+                                <option value="4">Agree</option>
+                                <option value="5">Strongly Agree</option>
+                          </select>
+                      </div>
+                      <div class="help-block with-errors"></div>
+                  </div>
+                
+                 <div class=" row form-group">
+                      <div>          
+                          <h4><strong>Question 9</strong></h4> 
+                          <label for="q9">Are you open to different cultures?</label>
+                          <select class="form-control selectBox chosen-select" id="q9" required>
+                                <option value>Make a Selection</option>
+                                <option value="1">Strongly Disagree</option>
+                                <option value="2">Disagree</option>
+                                <option value="3">Neutral</option>
+                                <option value="4">Agree</option>
+                                <option value="5">Strongly Agree</option>
+                          </select>
+                      </div>
+                      <div class="help-block with-errors"></div>
+                  </div>
+ 
+                 <div class=" row form-group">
+                      <div>          
+                          <h4><strong>Question 10</strong></h4> 
+                          <label for="q10">Do you speak other languages?</label>
+                          <select class="form-control selectBox chosen-select" id="q10" required>
+                                <option value>Make a Selection</option>
+                                <option value="1">Strongly Disagree</option>
+                                <option value="2">Disagree</option>
+                                <option value="3">Neutral</option>
+                                <option value="4">Agree</option>
+                                <option value="5">Strongly Agree</option>
+                          </select>
+                      </div>
+                      <div class="help-block with-errors"></div>
+                  </div>
+
+
                 </div>
             </form>
 
@@ -217,13 +283,13 @@
             $.post(currentURL, newFriend, function(data, status){
               console.log(data, status);
               var modal = 
-              "<div id=\"modal1\" class=\"modal\"> " +
+              "<div id=\"modal1\" class=\"modal bd-example-modal-sm\"> " +
                 "<div class=\"modal-content\">" +
                  "<h4>Closest Friend Match</h4>" +
                  "<h3>" + data.matchName + "</h3>" +
                  "<div class=\"divider\"></div>" +
                  "<h5 id=\"userMatch\"></h5>" +
-                 "<img id=\"my-img\" width=\"650\" src=\"" + data.matchPhotoURL + "\" >" +
+                 "<img id=\"my-img\" width=\"200\" src=\"" + data.matchPhotoURL + "\" >" +
  //               "<img id=\"userMat chImage\" class=\"materialboxed\" width=\"650\" src=\"\">" +
                "</div>"
 
@@ -274,7 +340,10 @@
          $("#q4").val(""); 
          $("#q5").val(""); 
          $("#q6").val("");
-
+         $("#q7").val("");
+         $("#q8").val("");
+         $("#q9").val("");
+         $("#q10").val("");
     }
 
 </script>

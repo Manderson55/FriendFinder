@@ -20,3 +20,14 @@ body {
 .selectBox {
 	width: 175px;
 }
+
+body .modal {
+	width: 500px;
+	margin-left: 250px;
+	padding: 20px;
+}
+
+body .modal-content {
+	text-align: center;
+	padding: 10px;
+}

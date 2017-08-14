@@ -6,17 +6,17 @@ var friendsArray = [
   {
     name: "Ahmed",
     photoURL: "./images/ahmed.jpg",
-    answers: [1,3,2,1,5,5]
+    answers: [1,3,2,1,5,5,1,2,3,4]
   },
     {
     name: "Mary",
     photoURL: "./images/Mary.jpg",
-    answers: [1,1,1,1,1,1]
+    answers: [1,1,1,1,1,1,1,1,1,1]
   },
   {
     name: "Vladimir",
     photoURL: "./images/Vladimir.jpeg",
-    answers: [5,5,5,5,5,5]
+    answers: [5,5,5,5,5,5,5,5,5,5]
   }
 
 ];
